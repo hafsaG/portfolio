@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!-- Smooth Scrolling Script -->
+     <script>
+         $(document).ready(function(){
+             $("a").on('click', function(event) {
+                 if (this.hash !== "") {
+                     event.preventDefault();
+                     var hash = this.hash;
+                     $('html, body').animate({
+                         scrollTop: $(hash).offset().top
+                     }, 800, function(){
+                         window.location.hash = hash;
+                     });
+                 }
+             });
+         });
+     </script>
+     <!-- Contact script -->
+     <script>
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var name = document.getElementsByName("name")[0].value;
+            var email = document.getElementsByName("email")[0].value;
+            var message = document.getElementsByName("message")[0].value;
+            var mailtoLink = "mailto:hgureye@outlook.com" + "?subject=Message from " + name + "&body=" + message;
+            window.location.href = mailtoLink;
+        });
+    </script>    
 </head>
 <body>
     <!-- Header -->
@@ -46,8 +74,8 @@
         <h2>Contact Me</h2>
         <p>Feel free to get in touch with me!</p>
         <form>
-            <input type="text" name="Hafsa Gureye" placeholder="Your Name">
-            <input type="email" name="hgureye@outlook.com placeholder="Your Email">
+            <input type="text" name="name" placeholder="Your Name">
+            <input type="email" name="email" placeholder="Your Email">
             <textarea name="message" placeholder="Your Message"></textarea>
             <button type="submit">Send Message</button>
         </form>
@@ -61,3 +89,4 @@
 
 </body>
 </html>
+
